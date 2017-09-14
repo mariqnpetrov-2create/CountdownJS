@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Title</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<style type="text/css" media="screen">
+		.wrapper { padding: 50px; }
+
+		.countdown { display: flex; justify-content: center; text-align: center; }
+		.countdown-element { margin: 0 10px; }
+		.countdown-element span { display: inline-block; }
+		.countdown-number { width: 30px; }
+	</style>
+
+	<script src="countdown.js"></script>
+</head>
+<body>
+<div class="wrapper">
+	<div class="countdown">
+		<div class="countdown-element">
+			<span class="countdown-number" id="cd-weeks">00</span>
+
+			<span class="countdown-text">Weeks</span>
+		</div><!-- /.countdown-val -->
+
+		<div class="countdown-element">
+			<span class="countdown-number" id="cd-days">00</span>
+
+			<span class="countdown-text">Days</span>
+		</div><!-- /.countdown-val -->
+
+		<div class="countdown-element">
+			<span class="countdown-number" id="cd-hours">00</span>
+
+			<span class="countdown-text">Hours</span>
+		</div><!-- /.countdown-val -->
+
+		<div class="countdown-element">
+			<span class="countdown-number" id="cd-minutes">00</span>
+
+			<span class="countdown-text">Minutes</span>
+		</div><!-- /.countdown-val -->
+
+		<div class="countdown-element">
+			<span class="countdown-number" id="cd-seconds">00</span>
+
+			<span class="countdown-text">Seconds</span>
+		</div><!-- /.countdown-val -->
+	</div><!-- /.countdown -->
+</div><!-- /.wrapper -->
+
+<script type="text/javascript">
+	var countdown = new Countdown('10/14/2017 12:36 PM');
+</script>
+</body>
+</html>
