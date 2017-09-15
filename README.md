@@ -5,14 +5,14 @@
 Set the following IDs on their relevant elements in the HTML:
 
 ```
-"cd-weeks" 		- for weeks
-"cd-days" 		- for days
-"cd-hours" 		- for hours
-"cd-minutes" 	- for minutes
-"cd-seconds" 	- for seconds
+"cd-weeks" 		- for weeks, no maximum value
+"cd-days" 		- for days, up to 6 if weeks is defined
+"cd-hours" 		- for hours, up to 23 if days is defined
+"cd-minutes" 	- for minutes, up to 59 if hours is defined
+"cd-seconds" 	- for seconds, up to 59 if minutes is defined
 ```
 
-Add only the IDs you need (if you don't need all of the values).
+Add all IDs up to the last one you need (if you don't need all of the values).
 
 ## How to run
 
