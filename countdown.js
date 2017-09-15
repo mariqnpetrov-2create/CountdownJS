@@ -13,7 +13,13 @@ var Countdown = (function() {
 
  		this.elements = {};
  		this.timeVal = {};
- 		this.remaining = {};
+ 		this.remaining = {
+ 			weeks: 0,
+ 			days: 0,
+ 			hours: 0,
+ 			minutes: 0,
+ 			seconds: 0
+ 		};
 
  		this.timeVal.second = 1000;
 		this.timeVal.minute = this.timeVal.second * 60;
@@ -60,7 +66,7 @@ var Countdown = (function() {
 			return;
 		}
 
-		this.getRemaining();
+		this.setRemaining();
 
 		this.writeResult();
 	}
@@ -72,12 +78,41 @@ var Countdown = (function() {
 		this.timeDistance = this.endDate - now;
 	}
 
-	CD.prototype.getRemaining = function() {
-		this.remaining.weeks = Math.floor(this.timeDistance / this.timeVal.week);
-		this.remaining.days = Math.floor(this.timeDistance / this.timeVal.day);
-		this.remaining.hours = Math.floor((this.timeDistance % this.timeVal.day) / this.timeVal.hour);
-		this.remaining.minutes = Math.floor((this.timeDistance % this.timeVal.hour) / this.timeVal.minute);
-		this.remaining.seconds = Math.floor((this.timeDistance % this.timeVal.minute) / this.timeVal.second);
+	CD.prototype.setRemaining = function() {
+		for ( var key in this.remaining ) {
+			this.remaining[key] = this.calculateRemaining(key);
+		}
+	}
+
+	CD.prototype.calculateRemaining = function(selector) {
+		var value;
+
+		switch (selector) {
+			case 'weeks':
+				value = this.timeDistance / this.timeVal.week;
+				break;
+
+			case 'days':
+				value = this.elements.weeks == null ? this.timeDistance / this.timeVal.day : (this.timeDistance % this.timeVal.week) / this.timeVal.day;
+				break;
+
+			case 'hours':
+				value = this.elements.days == null ? this.timeDistance / this.timeVal.hour : (this.timeDistance % this.timeVal.day) / this.timeVal.hour;
+				break;
+
+			case 'minutes':
+				value = this.elements.hours == null ? this.timeDistance / this.timeVal.minute : (this.timeDistance % this.timeVal.hour) / this.timeVal.minute;
+				break;
+
+			case 'seconds':
+				value = this.elements.minutes == null ? this.timeDistance / this.timeVal.second : (this.timeDistance % this.timeVal.minute) / this.timeVal.second;
+				break;
+
+			default:
+				value = NaN;
+		}
+
+		return Math.floor(value);
 	}
 
 	CD.prototype.writeResult = function() {
