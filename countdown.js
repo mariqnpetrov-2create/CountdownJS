@@ -109,7 +109,7 @@ var Countdown = (function() {
 				break;
 
 			default:
-				value = NaN;
+				value = 0;
 		}
 
 		return Math.floor(value);
